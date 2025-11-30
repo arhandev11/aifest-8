@@ -1,30 +1,51 @@
-import Header from '@/components/sections/Header';
-import HeroSection from '@/components/sections/HeroSection';
-import CountdownSection from '@/components/sections/CountdownSection';
-import VideoSection from '@/components/sections/VideoSection';
-import TimelineSection from '@/components/sections/TimelineSection';
-import CompetitionsSection from '@/components/sections/CompetitionsSection';
-import EventsSection from '@/components/sections/EventsSection';
-import GuestStarsSection from '@/components/sections/GuestStarsSection';
-import GallerySection from '@/components/sections/GallerySection';
-import FAQSection from '@/components/sections/FAQSection';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '@/context/AuthContext';
+import HomePage from '@/pages/HomePage';
+import RegistrationPage from '@/pages/RegistrationPage';
+import LoginPage from '@/pages/admin/LoginPage';
+import DashboardPage from '@/pages/admin/DashboardPage';
+import LombaIndividuPage from '@/pages/admin/LombaIndividuPage';
+import LombaKelompokPage from '@/pages/admin/LombaKelompokPage';
+import ProtectedRoute from '@/components/admin/ProtectedRoute';
 
 function App() {
   return (
-    <div className="min-h-screen bg-festival-black">
-      <Header />
-      <main>
-        <HeroSection />
-        <CountdownSection />
-        <VideoSection />
-        <TimelineSection />
-        <CompetitionsSection />
-        <EventsSection />
-        <GuestStarsSection />
-        <GallerySection />
-        <FAQSection />
-      </main>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/daftar/:slug" element={<RegistrationPage />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<LoginPage />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/lomba-individu"
+            element={
+              <ProtectedRoute>
+                <LombaIndividuPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/lomba-kelompok"
+            element={
+              <ProtectedRoute>
+                <LombaKelompokPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

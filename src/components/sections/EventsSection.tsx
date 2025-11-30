@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const events = [
   {
@@ -33,6 +33,18 @@ const EventsSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [activeEvents, setActiveEvents] = useState<Set<number>>(new Set());
 
+  // Auto-activate all events when section comes into view
+  useEffect(() => {
+    if (isInView) {
+      // Stagger the activation of each event
+      events.forEach((event, index) => {
+        setTimeout(() => {
+          setActiveEvents((prev) => new Set([...prev, event.id]));
+        }, 600 + index * 150); // Start after initial animation (600ms) + stagger
+      });
+    }
+  }, [isInView]);
+
   const toggleEvent = (id: number) => {
     setActiveEvents((prev) => {
       const newSet = new Set(prev);
@@ -52,7 +64,8 @@ const EventsSection = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black"
     >
       <motion.h2
-        className="font-playfair text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-12 text-center tracking-widest"
+        className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-12 text-center tracking-widest"
+        style={{ fontFamily: 'var(--font-family-sansita)' }}
         initial={{ opacity: 0, y: -20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
@@ -92,26 +105,27 @@ const EventsSection = () => {
 
                 <div className="relative z-10">
                   {/* Event Name */}
-                  <h3 className={`font-inter text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 tracking-wider transition-colors duration-500 ${
+                  <h3 className={`text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 tracking-wider transition-colors duration-500 ${
                     isActive ? 'text-white' : 'text-[#2a3a1a]'
-                  }`}>
+                  }`} style={{ fontFamily: 'var(--font-family-fraunces)' }}>
                     {event.name}
                   </h3>
 
                   {/* Event Date */}
-                  <p className={`font-inter text-center text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 transition-colors duration-500 ${
+                  <p className={`text-center text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 transition-colors duration-500 ${
                     isActive ? 'text-white/90' : 'text-[#2a3a1a]'
-                  }`}>
+                  }`} style={{ fontFamily: 'var(--font-family-lora)' }}>
                     {event.date}
                   </p>
 
                   {/* Register Button */}
                   <motion.button
-                    className={`w-full max-w-xs mx-auto block font-inter font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 ${
+                    className={`w-full max-w-xs mx-auto block font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 ${
                       isActive
                         ? 'bg-[#f5f5dc] text-[#2a3a1a] shadow-lg'
                         : 'bg-[#1a2815] text-[#3a4a2a]'
                     }`}
+                    style={{ fontFamily: 'var(--font-family-sansita)' }}
                     whileHover={isActive ? { scale: 1.05, y: -2 } : {}}
                     whileTap={isActive ? { scale: 0.95 } : {}}
                   >
@@ -119,9 +133,9 @@ const EventsSection = () => {
                   </motion.button>
 
                   {/* Contact Person */}
-                  <p className={`font-inter text-center text-base sm:text-lg md:text-xl mt-6 sm:mt-8 transition-colors duration-500 ${
+                  <p className={`text-center text-base sm:text-lg md:text-xl mt-6 sm:mt-8 transition-colors duration-500 ${
                     isActive ? 'text-[#2a3a1a]' : 'text-[#2a3a1a]'
-                  }`}>
+                  }`} style={{ fontFamily: 'var(--font-family-lora)' }}>
                     {event.contact}
                   </p>
                 </div>

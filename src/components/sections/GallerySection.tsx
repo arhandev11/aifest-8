@@ -37,7 +37,8 @@ const GallerySection = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black"
     >
       <motion.h2
-        className="font-playfair text-3xl sm:text-4xl md:text-5xl text-festival-gold font-bold mb-16 text-center tracking-widest"
+        className="text-3xl sm:text-4xl md:text-5xl text-festival-gold font-bold mb-16 text-center tracking-widest"
+        style={{ fontFamily: 'var(--font-family-sansita)' }}
         initial={{ opacity: 0, y: -20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}

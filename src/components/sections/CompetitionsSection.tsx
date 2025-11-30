@@ -1,19 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-
-const competitions = [
-  { id: 1, name: "Kaligrafi", description: "Islamic Calligraphy", isFull: false, rulebook: "/rulebook/RULEBOOK-KALIGRAFI.pdf" },
-  { id: 2, name: "Karya Ilmiah", description: "Scientific Paper", isFull: false, rulebook: "/rulebook/RULEBOOK-KARYA-ILMIAH.pdf" },
-  { id: 3, name: "MHQ", description: "Musabaqoh Hifdzil Quran", isFull: false, rulebook: "/rulebook/RULEBOOK-MHQ.pdf" },
-  { id: 4, name: "Pidato", description: "Islamic Speech", isFull: false, rulebook: "/rulebook/RULEBOOK-PIDATO.pdf" },
-  { id: 5, name: "Sparkling Idea", description: "Innovative Ideas", isFull: false, rulebook: "/rulebook/RULEBOOK-SPARKLING-IDEA.pdf" },
-  { id: 6, name: "Syiir", description: "Islamic Poetry", isFull: false, rulebook: "/rulebook/RULEBOOK-SYIIR.pdf" },
-];
+import { useNavigate } from "react-router-dom";
+import { competitions } from "@/types/competition";
 
 const CompetitionsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [litLanterns, setLitLanterns] = useState<Set<number>>(new Set());
+  const navigate = useNavigate();
 
   const handleLanternClick = (id: number) => {
     setLitLanterns((prev) => {
@@ -25,6 +19,11 @@ const CompetitionsSection = () => {
       }
       return newSet;
     });
+  };
+
+  const handleRegistrationClick = (e: React.MouseEvent, slug: string) => {
+    e.stopPropagation();
+    navigate(`/daftar/${slug}`);
   };
 
   return (
@@ -60,11 +59,12 @@ const CompetitionsSection = () => {
                 {/* Competition Name - Positioned on top of lantern */}
                 <div className="absolute top-[23%] left-1/2 -translate-x-1/2 z-10 text-center w-full px-2">
                   <h3
-                    className={`font-inter font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all duration-300 ${
+                    className={`font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all duration-300 ${
                       litLanterns.has(competition.id)
                         ? "text-2xl sm:text-3xl md:text-4xl text-white"
                         : "text-2xl sm:text-3xl md:text-4xl text-black"
                     }`}
+                    style={{ fontFamily: 'var(--font-family-fraunces)' }}
                   >
                     {competition.name}
                   </h3>
@@ -87,12 +87,15 @@ const CompetitionsSection = () => {
                       >
                         File
                       </a>
-                      <p className="font-inter font-bold text-base sm:text-lg md:text-xl text-orange-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      <p
+                        className="font-inter font-bold text-base sm:text-lg md:text-xl text-orange-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-orange-400 transition-colors duration-200 cursor-pointer"
+                        onClick={(e) => handleRegistrationClick(e, competition.slug)}
+                      >
                         Registration
                       </p>
                     </div>
                   ) : (
-                    <p className="font-inter font-bold text-sm sm:text-base md:text-lg text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] whitespace-pre-line">
+                    <p className="font-bold text-sm sm:text-base md:text-lg text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] whitespace-pre-line" style={{ fontFamily: 'var(--font-family-lora)' }}>
                       Tap to light{"\n"}the lantern!
                     </p>
                   )}

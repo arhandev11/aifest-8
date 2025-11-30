@@ -38,7 +38,7 @@ const HeroSection = () => {
       >
         {/* Main Title Image */}
         <motion.div
-          className="flex items-center justify-center mb-8"
+          className="flex items-center justify-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -46,13 +46,14 @@ const HeroSection = () => {
           <img
             src="/assets/section-1.png"
             alt="Aisyah Festival 8.0"
-            className="w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-auto drop-shadow-[0_4px_12px_rgba(212,175,55,0.3)]"
+            className="w-[420px] sm:w-[600px] md:w-[800px] lg:w-[1000px] xl:w-[1100px] h-auto drop-shadow-[0_4px_12px_rgba(212,175,55,0.3)]"
           />
         </motion.div>
 
         {/* Subtitle */}
         <motion.h2
-          className="font-playfair text-white/95 text-center text-lg sm:text-xl md:text-2xl font-normal tracking-wide leading-relaxed max-w-2xl px-4"
+          className="text-white/95 text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-relaxed max-w-4xl px-4"
+          style={{ fontFamily: 'var(--font-family-lora)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}

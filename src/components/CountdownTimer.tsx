@@ -94,7 +94,8 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
               <div className="relative">
                 <motion.span
                   key={unit.value}
-                  className="font-inter font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-festival-gold leading-none tabular-nums"
+                  className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-festival-gold leading-none tabular-nums"
+                  style={{ fontFamily: 'var(--font-family-sansita)' }}
                   initial={{ scale: 1.2, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.3 }}

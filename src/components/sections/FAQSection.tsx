@@ -96,10 +96,10 @@ const FAQSection = () => {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl text-festival-gold font-bold mb-4 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl text-festival-gold font-bold mb-4 text-center" style={{ fontFamily: 'var(--font-family-sansita)' }}>
           FREQUENTLY ASKED QUESTIONS
         </h2>
-        <p className="font-inter text-festival-light-gold text-xl sm:text-2xl text-center mb-12">
+        <p className="text-festival-light-gold text-xl sm:text-2xl text-center mb-12" style={{ fontFamily: 'var(--font-family-sansita)' }}>
           FAQs
         </p>
 

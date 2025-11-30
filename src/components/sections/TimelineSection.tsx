@@ -27,7 +27,8 @@ const TimelineSection = () => {
       }}
     >
       <motion.h2
-        className="font-playfair text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-16 text-center tracking-widest"
+        className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-16 text-center tracking-widest"
+        style={{ fontFamily: 'var(--font-family-sansita)' }}
         initial={{ opacity: 0, y: -20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
@@ -68,10 +69,10 @@ const TimelineSection = () => {
                     }}
                   >
                     <div className="border-2 border-festival-gold rounded-xl bg-black/80 backdrop-blur-sm px-6 py-4 min-w-[200px]">
-                      <p className="font-inter text-white text-sm sm:text-base mb-1 text-center font-medium">
+                      <p className="text-white text-sm sm:text-base mb-1 text-center font-medium" style={{ fontFamily: 'var(--font-family-lora)' }}>
                         {item.text}
                       </p>
-                      <p className="font-inter text-festival-light-gold text-xs sm:text-sm text-center">
+                      <p className="text-festival-light-gold text-xs sm:text-sm text-center" style={{ fontFamily: 'var(--font-family-lora)' }}>
                         {item.date}
                       </p>
                     </div>
