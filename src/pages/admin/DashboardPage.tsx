@@ -4,7 +4,7 @@ import { Users, UsersRound, Loader2 } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { useAuth } from '@/context/AuthContext';
 import { LombaIndividu, LombaKelompok } from '@/types/admin';
-import { API_BASE_URL } from '@/lib/api';
+import { apiFetchWithAuth } from '@/lib/api';
 
 const DashboardPage = () => {
   const { token } = useAuth();
@@ -16,12 +16,8 @@ const DashboardPage = () => {
     const fetchCounts = async () => {
       try {
         const [individuRes, kelompokRes] = await Promise.all([
-          fetch(`${API_BASE_URL}/api/lomba-individu`, {
-            headers: { 'Authorization': `Bearer ${token}` },
-          }),
-          fetch(`${API_BASE_URL}/api/lomba-kelompok`, {
-            headers: { 'Authorization': `Bearer ${token}` },
-          }),
+          apiFetchWithAuth('/api/lomba-individu', token || ''),
+          apiFetchWithAuth('/api/lomba-kelompok', token || ''),
         ]);
 
         if (individuRes.ok) {

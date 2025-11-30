@@ -6,7 +6,7 @@ import DataTable from '@/components/admin/DataTable';
 import { useAuth } from '@/context/AuthContext';
 import { LombaKelompok } from '@/types/admin';
 import { exportKelompokToExcel, exportKelompokToCSV } from '@/lib/export';
-import { API_BASE_URL } from '@/lib/api';
+import { apiFetchWithAuth, API_BASE_URL } from '@/lib/api';
 
 const LombaKelompokPage = () => {
   const { token } = useAuth();
@@ -18,9 +18,7 @@ const LombaKelompokPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/lomba-kelompok`, {
-          headers: { 'Authorization': `Bearer ${token}` },
-        });
+        const response = await apiFetchWithAuth('/api/lomba-kelompok', token || '');
 
         if (!response.ok) {
           throw new Error('Gagal mengambil data');

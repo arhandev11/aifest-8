@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { AuthState, User } from '@/types/admin';
-import { API_BASE_URL } from '@/lib/api';
+import { apiFetch, apiFetchWithAuth } from '@/lib/api';
 
 interface AuthContextType extends AuthState {
   login: (email: string, password: string) => Promise<boolean>;
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/login`, {
+      const response = await apiFetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,11 +66,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = async () => {
     try {
       if (authState.token) {
-        await fetch(`${API_BASE_URL}/api/logout`, {
+        await apiFetchWithAuth('/api/logout', authState.token, {
           method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${authState.token}`,
-          },
         });
       }
     } catch {

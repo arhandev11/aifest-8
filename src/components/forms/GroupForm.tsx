@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, Loader2, CheckCircle } from 'lucide-react';
 import { Competition, GroupFormData, jenjangOptions } from '@/types/competition';
-import { API_BASE_URL } from '@/lib/api';
+import { apiFetch } from '@/lib/api';
 
 interface GroupFormProps {
   competition: Competition;
@@ -132,7 +132,7 @@ const GroupForm = ({ competition }: GroupFormProps) => {
       if (formData.story_1) submitData.append('story_1', formData.story_1);
       if (formData.story_2) submitData.append('story_2', formData.story_2);
 
-      const response = await fetch(`${API_BASE_URL}/api/lomba-kelompok`, {
+      const response = await apiFetch('/api/lomba-kelompok', {
         method: 'POST',
         body: submitData,
       });
