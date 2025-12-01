@@ -86,15 +86,17 @@ const RegistrationPage = () => {
               >
                 {competition.description}
               </p>
-              <a
-                href={competition.rulebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-3 text-festival-gold hover:text-festival-light-gold underline text-sm"
-                style={{ fontFamily: 'var(--font-family-lora)' }}
-              >
-                Lihat Rulebook
-              </a>
+              {competition.rulebook && (
+                <a
+                  href={competition.rulebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-3 text-festival-gold hover:text-festival-light-gold underline text-sm"
+                  style={{ fontFamily: 'var(--font-family-lora)' }}
+                >
+                  Lihat Rulebook
+                </a>
+              )}
             </div>
 
             {/* Form */}
