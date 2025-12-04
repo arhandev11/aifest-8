@@ -16,7 +16,7 @@ const GuestStarsSection = () => {
     <section
       id="guest-stars"
       ref={ref}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-0 py-20 bg-black overflow-hidden"
     >
       <motion.h2
         className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-16 text-center tracking-widest"

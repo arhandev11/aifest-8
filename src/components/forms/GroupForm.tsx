@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Upload, Loader2, CheckCircle } from 'lucide-react';
+import { Upload, Loader2 } from 'lucide-react';
 import { Competition, GroupFormData, jenjangOptions } from '@/types/competition';
 import { apiFetch } from '@/lib/api';
 
@@ -9,6 +10,7 @@ interface GroupFormProps {
 }
 
 const GroupForm = ({ competition }: GroupFormProps) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<GroupFormData>({
     nama_1: '',
     nama_arab_1: '',
@@ -29,11 +31,11 @@ const GroupForm = ({ competition }: GroupFormProps) => {
     bukti_bayar: null,
     story_1: null,
     story_2: null,
+    twibbon: null,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -88,6 +90,7 @@ const GroupForm = ({ competition }: GroupFormProps) => {
     if (!formData.bukti_bayar) newErrors.bukti_bayar = 'Bukti bayar wajib diupload';
     if (!formData.story_1) newErrors.story_1 = 'Screenshot story Instagram wajib diupload';
     if (!formData.story_2) newErrors.story_2 = 'Screenshot story WhatsApp wajib diupload';
+    if (!formData.twibbon) newErrors.twibbon = 'Screenshot twibbon wajib diupload';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -131,6 +134,7 @@ const GroupForm = ({ competition }: GroupFormProps) => {
       if (formData.bukti_bayar) submitData.append('bukti_bayar', formData.bukti_bayar);
       if (formData.story_1) submitData.append('story_1', formData.story_1);
       if (formData.story_2) submitData.append('story_2', formData.story_2);
+      if (formData.twibbon) submitData.append('twibbon', formData.twibbon);
 
       const response = await apiFetch('/api/lomba-kelompok', {
         method: 'POST',
@@ -152,45 +156,13 @@ const GroupForm = ({ competition }: GroupFormProps) => {
         return;
       }
 
-      setIsSuccess(true);
+      navigate('/success');
     } catch {
       setErrors({ submit: 'Terjadi kesalahan jaringan. Silakan coba lagi.' });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  if (isSuccess) {
-    return (
-      <motion.div
-        className="text-center py-8"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-      >
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h2
-          className="text-xl sm:text-2xl text-white font-bold mb-2"
-          style={{ fontFamily: 'var(--font-family-sansita)' }}
-        >
-          Pendaftaran Berhasil!
-        </h2>
-        <p
-          className="text-white/70 mb-6"
-          style={{ fontFamily: 'var(--font-family-lora)' }}
-        >
-          Terima kasih telah mendaftar lomba {competition.name}
-        </p>
-        <a
-          href="/"
-          className="inline-block bg-festival-gold text-black font-bold py-3 px-8 rounded-full hover:bg-festival-light-gold transition-colors"
-          style={{ fontFamily: 'var(--font-family-sansita)' }}
-        >
-          Kembali ke Beranda
-        </a>
-      </motion.div>
-    );
-  }
 
   const inputClasses = "w-full bg-black/50 border border-festival-gold/30 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-festival-gold transition-colors";
   const labelClasses = "block text-white/90 text-sm mb-2";
@@ -386,6 +358,25 @@ const GroupForm = ({ competition }: GroupFormProps) => {
             />
           </label>
           {errors.story_2 && <p className="text-red-400 text-xs mt-1">{errors.story_2}</p>}
+        </div>
+
+        {/* Twibbon */}
+        <div>
+          <label className={labelClasses}>Screenshot Twibbon *</label>
+          <label className="flex items-center gap-3 cursor-pointer bg-black/50 border border-festival-gold/30 border-dashed rounded-xl px-4 py-4 hover:border-festival-gold transition-colors">
+            <Upload size={20} className="text-festival-gold" />
+            <span className="text-white/60 text-sm">
+              {formData.twibbon ? formData.twibbon.name : 'Pilih file (jpg, png, pdf)'}
+            </span>
+            <input
+              type="file"
+              name="twibbon"
+              onChange={handleFileChange}
+              accept=".jpg,.jpeg,.png,.pdf"
+              className="hidden"
+            />
+          </label>
+          {errors.twibbon && <p className="text-red-400 text-xs mt-1">{errors.twibbon}</p>}
         </div>
       </div>
 

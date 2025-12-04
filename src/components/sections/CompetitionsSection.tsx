@@ -5,7 +5,7 @@ import { competitions } from "@/types/competition";
 
 const CompetitionsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [litLanterns, setLitLanterns] = useState<Set<number>>(new Set());
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const CompetitionsSection = () => {
 
       <div className="max-w-7xl mx-auto w-full px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
-          {competitions.map((competition, index) => (
+          {competitions.filter(c => !c.hidden).map((competition, index) => (
             <motion.div
               key={competition.id}
               className="relative flex flex-col items-center cursor-pointer group"

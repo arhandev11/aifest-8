@@ -142,8 +142,10 @@ Retrieves all individual competition registrations with optional filtering.
         "bukti_bayar_url": "/storage/...",
         "story_1_url": "/storage/...",
         "story_2_url": "/storage/...",
+        "twibbon_url": "/storage/...",
         "story_instagram_full_url": "http://domain.com/storage/...",
         "story_whatsapp_full_url": "http://domain.com/storage/...",
+        "twibbon_full_url": "http://domain.com/storage/...",
         "created_at": "2024-11-30T00:00:00.000000Z",
         "updated_at": "2024-11-30T00:00:00.000000Z"
       }
@@ -179,6 +181,7 @@ Registers a new participant for individual competition.
 | bukti_bayar | file | Yes | Payment proof (jpg, jpeg, png, pdf) |
 | story_1 | file | Yes | Instagram story screenshot (jpg, jpeg, png, pdf) |
 | story_2 | file | Yes | WhatsApp story screenshot (jpg, jpeg, png, pdf) |
+| twibbon | file | Yes | Twibbon screenshot (jpg, jpeg, png, pdf) |
 
 **Success Response (200):**
 ```json
@@ -271,8 +274,10 @@ Retrieves all group competition registrations with optional filtering.
         "bukti_bayar_url": "/storage/...",
         "story_1_url": "/storage/...",
         "story_2_url": "/storage/...",
+        "twibbon_url": "/storage/...",
         "story_instagram_full_url": "http://domain.com/storage/...",
         "story_whatsapp_full_url": "http://domain.com/storage/...",
+        "twibbon_full_url": "http://domain.com/storage/...",
         "created_at": "2024-11-30T00:00:00.000000Z",
         "updated_at": "2024-11-30T00:00:00.000000Z"
       }
@@ -316,6 +321,7 @@ Registers a new group (3 members) for group competition.
 | bukti_bayar | file | Yes | Payment proof (jpg, jpeg, png, pdf) |
 | story_1 | file | Yes | Instagram story screenshot (jpg, jpeg, png, pdf) |
 | story_2 | file | Yes | WhatsApp story screenshot (jpg, jpeg, png, pdf) |
+| twibbon | file | Yes | Twibbon screenshot (jpg, jpeg, png, pdf) |
 
 **Success Response (200):**
 ```json
@@ -377,4 +383,4 @@ Deletes a group competition registration and its associated files.
 
 - Accepted file types: `jpg`, `jpeg`, `png`, `pdf`
 - Files are stored in the `public` disk
-- Full URLs for uploaded files are provided via `story_instagram_full_url` and `story_whatsapp_full_url` attributes
+- Full URLs for uploaded files are provided via `story_instagram_full_url`, `story_whatsapp_full_url`, and `twibbon_full_url` attributes

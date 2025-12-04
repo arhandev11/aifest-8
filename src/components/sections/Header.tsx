@@ -50,10 +50,10 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#about"
+                href="#faq"
                 className="font-inter font-medium text-[14px] sm:text-[15px] lg:text-[16px] text-gray-800 hover:text-festival-gold transition-all duration-200 relative group"
               >
-                About
+                FAQ
                 <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-festival-gold transition-all duration-200 group-hover:w-full"></span>
               </a>
             </li>

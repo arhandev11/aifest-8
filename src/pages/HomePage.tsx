@@ -8,6 +8,7 @@ import EventsSection from '@/components/sections/EventsSection';
 import GuestStarsSection from '@/components/sections/GuestStarsSection';
 import GallerySection from '@/components/sections/GallerySection';
 import FAQSection from '@/components/sections/FAQSection';
+import Footer from '@/components/sections/Footer';
 
 const HomePage = () => {
   return (
@@ -24,6 +25,7 @@ const HomePage = () => {
         <GallerySection />
         <FAQSection />
       </main>
+      <Footer />
     </div>
   );
 };

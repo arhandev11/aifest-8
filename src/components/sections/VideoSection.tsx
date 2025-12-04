@@ -17,11 +17,15 @@ const VideoSection = () => {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        {/* Video Placeholder */}
-        <div className="bg-white rounded-lg aspect-video flex items-center justify-center">
-          <p className="text-gray-400 font-inter text-sm sm:text-base">
-            Video Placeholder
-          </p>
+        {/* YouTube Embed */}
+        <div className="rounded-lg aspect-video overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/xTPOlSOfyXU?si=HiB88EKD9qDUZ6k4"
+            title="AIFest 8.0 Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full h-full"
+          />
         </div>
       </motion.div>
     </section>
