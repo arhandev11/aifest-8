@@ -19,13 +19,17 @@ const TimelineSection = () => {
       id="timeline"
       ref={ref}
       className="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-20 bg-black"
-      style={{
-        backgroundImage: "url(/assets/bg-timeline.png)",
-        backgroundRepeat: "repeat",
-        backgroundSize: "150%",
-        backgroundPosition: "center",
-      }}
     >
+      {/* Background Image with reduced brightness */}
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: "url(/assets/bg-timeline.png)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "150%",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <motion.h2
         className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-16 text-center tracking-widest"
         style={{ fontFamily: 'var(--font-family-sansita)' }}

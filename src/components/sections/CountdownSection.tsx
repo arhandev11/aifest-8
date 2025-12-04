@@ -6,8 +6,8 @@ const CountdownSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  // Set target date - example: December 31, 2025
-  const targetDate = new Date('2025-12-31T00:00:00');
+  // Set target date - May 2, 2026
+  const targetDate = new Date('2026-05-02T00:00:00');
 
   return (
     <section
