@@ -21,7 +21,7 @@ const HomePage = () => {
         <TimelineSection />
         <CompetitionsSection />
         <EventsSection />
-        <GuestStarsSection />
+        {/* <GuestStarsSection /> */}
         <GallerySection />
         <FAQSection />
       </main>

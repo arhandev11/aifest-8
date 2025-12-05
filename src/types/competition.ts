@@ -64,4 +64,4 @@ export const competitions: Competition[] = [
   { id: 14, name: "Jalan Sehat", slug: "jalan-sehat", description: "Fun Walk", type: "individual", isFull: false, hidden: true },
 ];
 
-export const jenjangOptions = ['SD', 'SMP', 'SMA', 'Umum'];
+export const jenjangOptions = ['SMP / Sederajat', 'SMA / Sederajat', 'Sarjana S1 / Sederajat'];
