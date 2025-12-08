@@ -13,8 +13,11 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-black/80 border-t border-festival-gold/20 py-6">
-        <div className="container mx-auto px-4">
+      <footer className="bg-black/80 border-t border-festival-gold/20">
+       
+
+        {/* Footer Content */}
+        <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p

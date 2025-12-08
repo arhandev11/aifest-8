@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
 import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
 import RegistrationPage from '@/pages/RegistrationPage';
 import SuccessPage from '@/pages/SuccessPage';
 import LoginPage from '@/pages/admin/LoginPage';
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/daftar/:slug" element={<RegistrationPage />} />
           <Route path="/success" element={<SuccessPage />} />
 

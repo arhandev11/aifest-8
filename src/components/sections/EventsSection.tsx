@@ -4,27 +4,38 @@ import { useRef, useState, useEffect } from 'react';
 const events = [
   {
     id: 1,
-    name: 'SEMINAR',
-    date: '32 November 2026',
+    name: 'DONOR DARAH',
+    date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
+    contactLink: 'https://wa.me/6285256200919',
   },
   {
     id: 2,
-    name: 'SEMINAR',
-    date: '32 November 2026',
+    name: 'BAKSOS',
+    date: 'Ahad, 3 Mei 2026',
     contact: 'Contact Person',
+    contactLink: 'https://wa.me/6282284570466',
   },
   {
     id: 3,
-    name: 'SEMINAR',
-    date: '32 November 2026',
+    name: 'PENGOBATAN GRATIS',
+    date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
+    contactLink: 'https://wa.me/6285860054243',
   },
   {
     id: 4,
-    name: 'SEMINAR',
-    date: '32 November 2026',
+    name: 'TABLIGH AKBAR',
+    date: 'Sabtu - Ahad, 2-3 Mei 2026',
     contact: 'Contact Person',
+    contactLink: 'https://wa.me/6282126379802',
+  },
+  {
+    id: 5,
+    name: 'SEMINAR',
+    date: 'Sabtu, 2 Mei 2026',
+    contact: 'Contact Person',
+    contactLink: 'https://wa.me/6285219170323',
   },
 ];
 
@@ -133,11 +144,18 @@ const EventsSection = () => {
                   </motion.button>
 
                   {/* Contact Person */}
-                  <p className={`text-center text-base sm:text-lg md:text-xl mt-6 sm:mt-8 transition-colors duration-500 ${
-                    isActive ? 'text-[#2a3a1a]' : 'text-[#2a3a1a]'
-                  }`} style={{ fontFamily: 'var(--font-family-lora)' }}>
+                  <a
+                    href={event.contactLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className={`block text-center text-base sm:text-lg md:text-xl mt-6 sm:mt-8 transition-colors duration-500 hover:underline ${
+                      isActive ? 'text-[#f5f5dc] hover:text-white' : 'text-[#4a5a3a]'
+                    }`}
+                    style={{ fontFamily: 'var(--font-family-lora)' }}
+                  >
                     {event.contact}
-                  </p>
+                  </a>
                 </div>
               </motion.div>
             );

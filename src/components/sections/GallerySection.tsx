@@ -13,21 +13,23 @@ const GallerySection = () => {
     { id: 4, image: '/gallery/Lomba Hadits Arba_in.jpeg', title: 'Lomba Hadits Arba\'in', span: 'col-span-1 row-span-2' }, // Tall
     { id: 5, image: '/gallery/MHQ.jpeg', title: 'MHQ', span: 'col-span-1 row-span-1' },
     { id: 6, image: '/gallery/Peduli Sosial.jpeg', title: 'Peduli Sosial', span: 'col-span-1 row-span-1' },
-    { id: 7, image: '/gallery/Tabligh Akbar.JPG', title: 'Tabligh Akbar', span: 'col-span-2 row-span-1' }, // Wide
-    { id: 8, image: '/gallery/Tabligh Akbar(1).JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
-    { id: 9, image: '/gallery/Tabligh Akbar(2).JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
+    { id: 7, image: '/gallery/Pengobatan Gratis.jpeg', title: 'Pengobatan Gratis', span: 'col-span-2 row-span-1' }, // Wide
+    { id: 8, image: '/gallery/Tabligh Akbar.JPG', title: 'Tabligh Akbar', span: 'col-span-2 row-span-1' }, // Wide
+    { id: 9, image: '/gallery/Tabligh Akbar(1).JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
+    { id: 10, image: '/gallery/Tabligh Akbar(2).JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
   ];
 
   const galleryItemsDesktop = [
-    { id: 1, image: '/gallery/Bazar.JPG', title: 'Bazar', span: 'col-span-1 row-span-1' },
-    { id: 2, image: '/gallery/Lomba Cerdas Cermat.jpeg', title: 'Lomba Cerdas Cermat', span: 'col-span-1 row-span-1' },
-    { id: 3, image: '/gallery/Lomba Esai.jpeg', title: 'Lomba Esai', span: 'col-span-1 row-span-1' },
-    { id: 4, image: '/gallery/Lomba Hadits Arba_in.jpeg', title: 'Lomba Hadits Arba\'in', span: 'col-span-1 row-span-1' },
-    { id: 5, image: '/gallery/MHQ.jpeg', title: 'MHQ', span: 'col-span-2 row-span-1' }, // Wide
-    { id: 6, image: '/gallery/Peduli Sosial.jpeg', title: 'Peduli Sosial', span: 'col-span-1 row-span-2' }, // Tall
-    { id: 7, image: '/gallery/Tabligh Akbar.JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
-    { id: 8, image: '/gallery/Tabligh Akbar(1).JPG', title: 'Tabligh Akbar', span: 'col-span-2 row-span-1' }, // Wide
-    { id: 9, image: '/gallery/Tabligh Akbar(2).JPG', title: 'Tabligh Akbar', span: 'col-span-1 row-span-1' },
+    { id: 1, image: '/gallery/Bazar.JPG', title: 'Bazar' },
+    { id: 2, image: '/gallery/Lomba Cerdas Cermat.jpeg', title: 'Lomba Cerdas Cermat' },
+    { id: 3, image: '/gallery/Lomba Esai.jpeg', title: 'Lomba Esai' },
+    { id: 4, image: '/gallery/Lomba Hadits Arba_in.jpeg', title: 'Lomba Hadits Arba\'in' },
+    { id: 5, image: '/gallery/MHQ.jpeg', title: 'MHQ' },
+    { id: 6, image: '/gallery/Peduli Sosial.jpeg', title: 'Peduli Sosial' },
+    { id: 7, image: '/gallery/Pengobatan Gratis.jpeg', title: 'Pengobatan Gratis' },
+    { id: 8, image: '/gallery/Tabligh Akbar.JPG', title: 'Tabligh Akbar' },
+    { id: 9, image: '/gallery/Tabligh Akbar(1).JPG', title: 'Tabligh Akbar' },
+    { id: 10, image: '/gallery/Tabligh Akbar(2).JPG', title: 'Tabligh Akbar' },
   ];
 
   return (
@@ -89,11 +91,11 @@ const GallerySection = () => {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden md:grid grid-cols-4 auto-rows-[200px] gap-4">
+        <div className="hidden md:grid grid-cols-3 lg:grid-cols-4 gap-6">
           {galleryItemsDesktop.map((item, index) => (
             <motion.div
               key={item.id}
-              className={`relative ${item.span} rounded-2xl overflow-hidden border border-festival-gold/20 group cursor-pointer`}
+              className="relative aspect-square rounded-2xl overflow-hidden border border-festival-gold/20 group cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}

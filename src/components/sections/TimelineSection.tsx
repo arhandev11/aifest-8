@@ -3,11 +3,11 @@ import { useRef } from "react";
 
 const timelineData = [
   { text: "Open Registration", date: "5 Desember 2025" },
-  { text: "Close Registration", date: "25 April 2025" },
-  { text: "Technical Meeting", date: "28 April 2025" },
-  { text: "Opening Ceremony", date: "2 Mei 2025" },
-  { text: "Pelaksanaan Lomba", date: "2-3 Mei 2025" },
-  { text: "Closing Ceremony", date: "3 Mei 2025" },
+  { text: "Close Registration", date: "25 April 2026" },
+  { text: "Technical Meeting", date: "28 April 2026" },
+  { text: "Opening Ceremony", date: "2 Mei 2026" },
+  { text: "Pelaksanaan Lomba", date: "2-3 Mei 2026" },
+  { text: "Closing Ceremony", date: "3 Mei 2026" },
 ];
 
 const TimelineSection = () => {
