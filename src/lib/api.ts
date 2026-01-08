@@ -1,9 +1,10 @@
 // API Base URL - Change this to your actual API URL
+// export const API_BASE_URL = "http://192.168.100.181:8000";
 export const API_BASE_URL = "https://api.aisyahfestival.com";
 
 // Default headers for all requests
 const defaultHeaders: HeadersInit = {
-  'Accept': 'application/json',
+  Accept: "application/json",
 };
 
 // API fetch helper with default headers
@@ -34,7 +35,7 @@ export const apiFetchWithAuth = async (
     ...rest,
     headers: {
       ...defaultHeaders,
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       ...headers,
     },
   });

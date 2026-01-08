@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Upload, Loader2 } from 'lucide-react';
 import { Competition, IndividualFormData, jenjangOptions } from '@/types/competition';
-import { apiFetch } from '@/lib/api';
+import { apiFetch, API_BASE_URL } from '@/lib/api';
 
 interface IndividualFormProps {
   competition: Competition;
@@ -95,6 +95,15 @@ const IndividualForm = ({ competition }: IndividualFormProps) => {
       if (formData.story_2) submitData.append('story_2', formData.story_2);
       if (formData.twibbon) submitData.append('twibbon', formData.twibbon);
 
+      // Debug: log file sizes
+      const debugInfo = {
+        bukti_bayar: formData.bukti_bayar ? `${formData.bukti_bayar.name} (${(formData.bukti_bayar.size / 1024 / 1024).toFixed(2)} MB)` : 'none',
+        story_1: formData.story_1 ? `${formData.story_1.name} (${(formData.story_1.size / 1024 / 1024).toFixed(2)} MB)` : 'none',
+        story_2: formData.story_2 ? `${formData.story_2.name} (${(formData.story_2.size / 1024 / 1024).toFixed(2)} MB)` : 'none',
+        twibbon: formData.twibbon ? `${formData.twibbon.name} (${(formData.twibbon.size / 1024 / 1024).toFixed(2)} MB)` : 'none',
+      };
+      console.log('Submitting with files:', debugInfo);
+
       const response = await apiFetch('/api/lomba-individu', {
         method: 'POST',
         body: submitData,
@@ -116,8 +125,16 @@ const IndividualForm = ({ competition }: IndividualFormProps) => {
       }
 
       navigate('/success');
-    } catch {
-      setErrors({ submit: 'Terjadi kesalahan jaringan. Silakan coba lagi.' });
+    } catch (e) {
+      console.error('Registration error:', e);
+      const apiUrl = `${API_BASE_URL}/api/lomba-individu`;
+      const fileInfo = `\n\nAPI URL: ${apiUrl}\n\nFile sizes:\n- Bukti Bayar: ${formData.bukti_bayar ? `${(formData.bukti_bayar.size / 1024 / 1024).toFixed(2)} MB` : 'none'}\n- Story IG: ${formData.story_1 ? `${(formData.story_1.size / 1024 / 1024).toFixed(2)} MB` : 'none'}\n- Story WA: ${formData.story_2 ? `${(formData.story_2.size / 1024 / 1024).toFixed(2)} MB` : 'none'}\n- Twibbon: ${formData.twibbon ? `${(formData.twibbon.size / 1024 / 1024).toFixed(2)} MB` : 'none'}`;
+      if (e instanceof Error) {
+        const errorDetails = `Error: ${e.name}\nMessage: ${e.message}${fileInfo}`;
+        setErrors({ submit: errorDetails });
+      } else {
+        setErrors({ submit: `Unknown error: ${String(e)}${fileInfo}` });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -129,8 +146,10 @@ const IndividualForm = ({ competition }: IndividualFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-5" style={{ fontFamily: 'var(--font-family-lora)' }}>
       {errors.submit && (
-        <div className="bg-red-500/20 border border-red-500 rounded-xl p-4 text-red-400 text-sm">
-          {errors.submit}
+        <div className="bg-red-500/20 border border-red-500 rounded-xl p-4 text-red-400 text-sm max-h-60 overflow-y-auto">
+          <pre className="whitespace-pre-wrap break-words font-mono text-xs">
+            {errors.submit}
+          </pre>
         </div>
       )}
 

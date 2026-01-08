@@ -157,8 +157,13 @@ const GroupForm = ({ competition }: GroupFormProps) => {
       }
 
       navigate('/success');
-    } catch {
-      setErrors({ submit: 'Terjadi kesalahan jaringan. Silakan coba lagi.' });
+    } catch (e) {
+      console.error('Registration error:', e);
+      if (e instanceof Error) {
+        setErrors({ submit: `Error: ${e.name}\nMessage: ${e.message}\nStack: ${e.stack}` });
+      } else {
+        setErrors({ submit: `Unknown error: ${JSON.stringify(e)}` });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -237,8 +242,10 @@ const GroupForm = ({ competition }: GroupFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-5" style={{ fontFamily: 'var(--font-family-lora)' }}>
       {errors.submit && (
-        <div className="bg-red-500/20 border border-red-500 rounded-xl p-4 text-red-400 text-sm">
-          {errors.submit}
+        <div className="bg-red-500/20 border border-red-500 rounded-xl p-4 text-red-400 text-sm max-h-60 overflow-y-auto">
+          <pre className="whitespace-pre-wrap break-words font-mono text-xs">
+            {errors.submit}
+          </pre>
         </div>
       )}
 

@@ -1,13 +1,27 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
-const events = [
+type RegistrationType = 'external' | 'coming-soon' | 'none' | 'default';
+
+interface Event {
+  id: number;
+  name: string;
+  date: string;
+  contact: string;
+  contactLink: string;
+  registrationType: RegistrationType;
+  registrationUrl?: string;
+}
+
+const events: Event[] = [
   {
     id: 1,
     name: 'DONOR DARAH',
     date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6285256200919',
+    registrationType: 'external',
+    registrationUrl: 'https://forms.gle/uisUoKUDh6bXgFCi6',
   },
   {
     id: 2,
@@ -15,6 +29,7 @@ const events = [
     date: 'Ahad, 3 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6282284570466',
+    registrationType: 'coming-soon',
   },
   {
     id: 3,
@@ -22,6 +37,7 @@ const events = [
     date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6285860054243',
+    registrationType: 'coming-soon',
   },
   {
     id: 4,
@@ -29,6 +45,7 @@ const events = [
     date: 'Sabtu - Ahad, 2-3 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6282312462952',
+    registrationType: 'none',
   },
   {
     id: 5,
@@ -36,6 +53,7 @@ const events = [
     date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6285219170323',
+    registrationType: 'default',
   },
 ];
 
@@ -130,18 +148,52 @@ const EventsSection = () => {
                   </p>
 
                   {/* Register Button */}
-                  <motion.button
-                    className={`w-full max-w-xs mx-auto block font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 ${
-                      isActive
-                        ? 'bg-[#f5f5dc] text-[#2a3a1a] shadow-lg'
-                        : 'bg-[#1a2815] text-[#3a4a2a]'
-                    }`}
-                    style={{ fontFamily: 'var(--font-family-sansita)' }}
-                    whileHover={isActive ? { scale: 1.05, y: -2 } : {}}
-                    whileTap={isActive ? { scale: 0.95 } : {}}
-                  >
-                    Daftar
-                  </motion.button>
+                  {event.registrationType === 'external' && (
+                    <motion.a
+                      href={event.registrationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={`w-full max-w-xs mx-auto block text-center font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 ${
+                        isActive
+                          ? 'bg-[#f5f5dc] text-[#2a3a1a] shadow-lg'
+                          : 'bg-[#1a2815] text-[#3a4a2a]'
+                      }`}
+                      style={{ fontFamily: 'var(--font-family-sansita)' }}
+                      whileHover={isActive ? { scale: 1.05, y: -2 } : {}}
+                      whileTap={isActive ? { scale: 0.95 } : {}}
+                    >
+                      Daftar
+                    </motion.a>
+                  )}
+                  {event.registrationType === 'coming-soon' && (
+                    <motion.button
+                      disabled
+                      className={`w-full max-w-xs mx-auto block font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 cursor-not-allowed ${
+                        isActive
+                          ? 'bg-[#f5f5dc]/60 text-[#2a3a1a]/60'
+                          : 'bg-[#1a2815] text-[#3a4a2a]'
+                      }`}
+                      style={{ fontFamily: 'var(--font-family-sansita)' }}
+                    >
+                      Coming Soon
+                    </motion.button>
+                  )}
+                  {event.registrationType === 'default' && (
+                    <motion.button
+                      className={`w-full max-w-xs mx-auto block font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-lg sm:text-xl lg:text-2xl tracking-wider transition-all duration-500 ${
+                        isActive
+                          ? 'bg-[#f5f5dc] text-[#2a3a1a] shadow-lg'
+                          : 'bg-[#1a2815] text-[#3a4a2a]'
+                      }`}
+                      style={{ fontFamily: 'var(--font-family-sansita)' }}
+                      whileHover={isActive ? { scale: 1.05, y: -2 } : {}}
+                      whileTap={isActive ? { scale: 0.95 } : {}}
+                    >
+                      Daftar
+                    </motion.button>
+                  )}
+                  {/* No button rendered for registrationType === 'none' */}
 
                   {/* Contact Person */}
                   <a
