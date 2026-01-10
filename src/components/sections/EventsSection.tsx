@@ -21,7 +21,7 @@ const events: Event[] = [
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6285256200919',
     registrationType: 'external',
-    registrationUrl: 'https://forms.gle/uisUoKUDh6bXgFCi6',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdqbbcyWQafExSCUzJLI58s1apCp5-BZ2QdULGppil8NmX_Hw/viewform?usp=publish-editor',
   },
   {
     id: 2,
