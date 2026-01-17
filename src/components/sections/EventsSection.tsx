@@ -53,7 +53,8 @@ const events: Event[] = [
     date: 'Sabtu, 2 Mei 2026',
     contact: 'Contact Person',
     contactLink: 'https://wa.me/6285219170323',
-    registrationType: 'default',
+    registrationType: 'external',
+    registrationUrl: 'https://bit.ly/SeminarAifest2026',
   },
 ];
 
