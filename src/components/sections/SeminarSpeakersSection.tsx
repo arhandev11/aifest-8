@@ -1,28 +1,16 @@
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
-const guestStars = [
+const seminarSpeakers = [
   {
-    name: "Ustadz Sofyan Chalid Ruray",
-    honorific: "hafizhahullah",
-    schedule: "Sabtu, 2 Mei 2026 | 13.00–15.00 WIB",
-    image: "/content/pengisi-tabligh-akbar/Ustadz Sofyan Chalid Ruray, Lc..png",
-  },
-  {
-    name: "Ustadz Hamdi Solah Al-Bakry",
-    honorific: "hafizhahullah",
-    schedule: "Ahad, 3 Mei 2026 | 10.00–12.00 WIB",
-    image: "/content/pengisi-tabligh-akbar/Ustadz Hamdi Solah Al-Bakry, Lc..png",
-  },
-  {
-    name: "Ustadz Subhan Bawazier",
-    honorific: "hafizhahullah",
-    schedule: "Ahad, 3 Mei 2026 | 13.00–15.00 WIB",
-    image: "/content/pengisi-tabligh-akbar/Ustadz Subhan Bawazier.png",
+    name: "Dr. Daris Tamin, M.Pd.",
+    honorific: "Pemateri",
+    schedule: "Sabtu, 2 Mei 2026 | 09.30 WIB",
+    image: "/content/pengisi-seminar/DR. DARIS TAMIN, M.png",
   },
 ];
 
-const GuestStarCard = ({ guest, delay }: { guest: typeof guestStars[number]; delay: number }) => {
+const SpeakerCard = ({ speaker, delay }: { speaker: typeof seminarSpeakers[number]; delay: number }) => {
   const [isRevealed, setIsRevealed] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -134,8 +122,8 @@ const GuestStarCard = ({ guest, delay }: { guest: typeof guestStars[number]; del
               >
                 <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-festival-gold/60 shadow-lg shadow-festival-gold/10">
                   <img
-                    src={guest.image}
-                    alt={guest.name}
+                    src={speaker.image}
+                    alt={speaker.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -159,19 +147,19 @@ const GuestStarCard = ({ guest, delay }: { guest: typeof guestStars[number]; del
               className="text-white text-lg sm:text-xl font-bold mb-1"
               style={{ fontFamily: "var(--font-family-sansita)" }}
             >
-              {guest.name}
+              {speaker.name}
             </h3>
             <p
               className="text-festival-gold/80 text-sm italic mb-3"
               style={{ fontFamily: "var(--font-family-lora)" }}
             >
-              {guest.honorific}
+              {speaker.honorific}
             </p>
             <p
               className="text-gray-400 text-sm"
               style={{ fontFamily: "var(--font-family-lora)" }}
             >
-              {guest.schedule}
+              {speaker.schedule}
             </p>
           </motion.div>
         )}
@@ -180,13 +168,13 @@ const GuestStarCard = ({ guest, delay }: { guest: typeof guestStars[number]; del
   );
 };
 
-const GuestStarsSection = () => {
+const SeminarSpeakersSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <section
-      id="guest-stars"
+      id="seminar-speakers"
       ref={ref}
       className="relative flex flex-col items-center px-6 py-20 bg-black overflow-hidden"
     >
@@ -197,16 +185,16 @@ const GuestStarsSection = () => {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
       >
-        PENGISI TABLIGH AKBAR
+        PENGISI SEMINAR
       </motion.h2>
 
       <div className="flex flex-col gap-28 w-full items-center">
-        {guestStars.map((guest, index) => (
-          <GuestStarCard key={index} guest={guest} delay={0.2 + index * 0.15} />
+        {seminarSpeakers.map((speaker, index) => (
+          <SpeakerCard key={index} speaker={speaker} delay={0.2 + index * 0.15} />
         ))}
       </div>
     </section>
   );
 };
 
-export default GuestStarsSection;
+export default SeminarSpeakersSection;

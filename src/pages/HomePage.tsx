@@ -4,8 +4,11 @@ import EventsSection from "@/components/sections/EventsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import Footer from "@/components/sections/Footer";
 import GallerySection from "@/components/sections/GallerySection";
+import GuestStarsSection from "@/components/sections/GuestStarsSection";
 import Header from "@/components/sections/Header";
+import SeminarSpeakersSection from "@/components/sections/SeminarSpeakersSection";
 import HeroSection from "@/components/sections/HeroSection";
+import SponsorsSection from "@/components/sections/SponsorsSection";
 import TimelineSection from "@/components/sections/TimelineSection";
 import VideoSection from "@/components/sections/VideoSection";
 
@@ -20,8 +23,10 @@ const HomePage = () => {
         <TimelineSection />
         <CompetitionsSection />
         <EventsSection />
-        {/* <GuestStarsSection /> */}
+        <GuestStarsSection />
+        <SeminarSpeakersSection />
         <GallerySection />
+        <SponsorsSection />
         <FAQSection />
         {/* Location Map */}
         <div className="w-full max-w-4xl mx-auto px-6 py-20">
