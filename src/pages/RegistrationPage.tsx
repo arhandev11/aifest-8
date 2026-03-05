@@ -24,6 +24,19 @@ const RegistrationPage = () => {
     );
   }
 
+  if (competition.closed) {
+    return (
+      <div className="min-h-screen bg-festival-black flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-white text-2xl mb-4">Pendaftaran {competition.name} sudah ditutup</h1>
+          <Link to="/" className="text-festival-gold hover:text-festival-light-gold">
+            Kembali ke beranda
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (competition.isFull) {
     return (
       <div className="min-h-screen bg-festival-black flex items-center justify-center">

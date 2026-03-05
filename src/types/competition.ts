@@ -6,6 +6,7 @@ export interface Competition {
   type: 'individual' | 'group';
   rulebook?: string;
   isFull: boolean;
+  closed?: boolean;
   hidden?: boolean;
 }
 
@@ -60,7 +61,7 @@ export const competitions: Competition[] = [
   { id: 10, name: "Sparkling Idea", slug: "sparkling-idea", description: "Innovative Ideas", type: "group", isFull: false, rulebook: "https://drive.google.com/drive/folders/1uxtK-POgq7av5_OeYsdbJrF_oduKd6QV?usp=sharing" },
   { id: 11, name: "Syiir", slug: "syiir", description: "Islamic Poetry", type: "individual", isFull: false, rulebook: "https://drive.google.com/drive/folders/18xid2CS35KaO74sG_GseNJBT5iKRpUei?usp=sharing" },
   { id: 12, name: "Video Kreatif Individu", slug: "video-kreatif-individu", description: "Creative Video Individual", type: "individual", isFull: false, rulebook: "https://drive.google.com/drive/folders/1X6QK_Nd-zh1FWZHQk109EvX4Y7WVEcYd?usp=sharing" },
-  { id: 13, name: "Video Kreatif Group", slug: "video-kreatif-group", description: "Creative Video Group", type: "group", isFull: false, rulebook: "https://drive.google.com/drive/folders/1X6QK_Nd-zh1FWZHQk109EvX4Y7WVEcYd?usp=sharing" },
+  { id: 13, name: "Video Kreatif Group", slug: "video-kreatif-group", description: "Creative Video Group", type: "group", isFull: false, closed: true, rulebook: "https://drive.google.com/drive/folders/1X6QK_Nd-zh1FWZHQk109EvX4Y7WVEcYd?usp=sharing" },
   { id: 14, name: "Jalan Sehat", slug: "jalan-sehat", description: "Fun Walk", type: "individual", isFull: false, hidden: true },
 ];
 

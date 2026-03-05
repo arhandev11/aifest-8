@@ -72,7 +72,11 @@ const CompetitionsSection = () => {
 
                 {/* Text below competition name */}
                 <div className="absolute top-[44%] left-1/2 -translate-x-1/2 z-10 text-center w-full px-2">
-                  {competition.isFull ? (
+                  {competition.closed ? (
+                    <p className="font-inter font-bold text-sm sm:text-base md:text-lg text-red-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      Pendaftaran ditutup
+                    </p>
+                  ) : competition.isFull ? (
                     <p className="font-inter font-bold text-sm sm:text-base md:text-lg text-red-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                       Registration is full
                     </p>
