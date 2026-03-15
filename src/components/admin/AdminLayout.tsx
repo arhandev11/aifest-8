@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-import { competitions } from '@/types/competition';
-import { LayoutDashboard, Users, UsersRound, LogOut, ChevronDown, ChevronRight } from 'lucide-react';
+import { useCompetitions } from '@/context/CompetitionContext';
+import { LayoutDashboard, Users, UsersRound, LogOut, ChevronDown, ChevronRight, Settings } from 'lucide-react';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -12,6 +12,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const { competitions } = useCompetitions();
   const [isCompetitionsOpen, setIsCompetitionsOpen] = useState(true);
 
   const handleLogout = async () => {
@@ -109,6 +110,21 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                   })}
                 </div>
               )}
+            </li>
+
+            {/* Settings */}
+            <li>
+              <Link
+                to="/admin/settings"
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                  location.pathname === '/admin/settings'
+                    ? 'bg-festival-gold/20 text-festival-gold'
+                    : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                }`}
+              >
+                <Settings size={20} />
+                <span>Pengaturan Lomba</span>
+              </Link>
             </li>
           </ul>
         </nav>

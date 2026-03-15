@@ -1,13 +1,14 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
-import { competitions } from '@/types/competition';
+import { useCompetitions } from '@/context/CompetitionContext';
 import IndividualForm from '@/components/forms/IndividualForm';
 import GroupForm from '@/components/forms/GroupForm';
 
 const RegistrationPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { competitions } = useCompetitions();
 
   const competition = competitions.find(c => c.slug === slug);
 

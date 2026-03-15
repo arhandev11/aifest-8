@@ -1,11 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { competitions } from "@/types/competition";
+import { useCompetitions } from "@/context/CompetitionContext";
 
 const CompetitionsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const { competitions } = useCompetitions();
   const [litLanterns, setLitLanterns] = useState<Set<number>>(new Set());
   const navigate = useNavigate();
 

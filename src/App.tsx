@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
+import { CompetitionProvider } from '@/context/CompetitionContext';
 import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
 import RegistrationPage from '@/pages/RegistrationPage';
@@ -7,10 +8,12 @@ import SuccessPage from '@/pages/SuccessPage';
 import LoginPage from '@/pages/admin/LoginPage';
 import DashboardPage from '@/pages/admin/DashboardPage';
 import CompetitionPage from '@/pages/admin/CompetitionPage';
+import CompetitionSettingsPage from '@/pages/admin/CompetitionSettingsPage';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 
 function App() {
   return (
+    <CompetitionProvider>
     <AuthProvider>
       <Router>
         <Routes>
@@ -38,9 +41,18 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/settings"
+            element={
+              <ProtectedRoute>
+                <CompetitionSettingsPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
+    </CompetitionProvider>
   );
 }
 
