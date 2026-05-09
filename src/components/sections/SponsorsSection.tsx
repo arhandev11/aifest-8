@@ -3,15 +3,24 @@ import { useRef } from "react";
 
 const sponsors = [
   { name: "Felancy", image: "/content/sponsored-by/LOGO FLC.png" },
-  { name: "Dafi Pizza", image: "/content/sponsored-by/WhatsApp Image 2026-01-10 at 17.00.30.jpeg" },
   { name: "Sari Roti", image: "/content/sponsored-by/Logo-Sari-Roti Hires.png" },
   { name: "AFI Design", image: "/content/sponsored-by/afi design.jpg.jpeg" },
   { name: "Marchee", image: "/content/sponsored-by/Marchee Logo 1_1.png" },
   { name: "Muslim Life Fest", image: "/content/sponsored-by/Logo Muslim Life Fest.png" },
+  { name: "MLF", image: "/content/sponsored-by/MLF (21).png" },
+  { name: "AMH", image: "/content/sponsored-by/Logo AMH Hires.png" },
+  { name: "BC Group", image: "/content/sponsored-by/Logo BC GROUP -2.png" },
+  { name: "Katabtoe", image: "/content/sponsored-by/PRIMARY LOGO KATABTOE.png" },
   { name: "Sponsor", image: "/content/sponsored-by/IMG_5213.PNG" },
   { name: "Sponsor", image: "/content/sponsored-by/IMG_1047.JPG" },
   { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-01-11 at 20.17.04.jpeg" },
   { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-01-12 at 17.08.37.jpeg" },
+  { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-03-04 at 09.04.17.jpeg" },
+  { name: "Sponsor", image: "/content/sponsored-by/ke.png" },
+  { name: "Sponsor", image: "/content/sponsored-by/sponsor (5).png" },
+  { name: "Sponsor", image: "/content/sponsored-by/sponsor (6).png" },
+  { name: "Sponsor", image: "/content/sponsored-by/sponsor (7).png" },
+  { name: "Sponsor", image: "/content/sponsored-by/sponsor (8).png" },
 ];
 
 const mediaPartners = {
@@ -40,6 +49,13 @@ const mediaPartners = {
 
 const supportedBy = [
   { name: "Palang Merah Indonesia", image: "/content/supported-by/seminar (3).png" },
+  { name: "ALC", image: "/content/supported-by/LOGO ALC - White Background.png" },
+  { name: "RS UMMI", image: "/content/supported-by/Logo RS UMMI.png" },
+  { name: "Supporter", image: "/content/supported-by/logo tambahan.png" },
+  { name: "Supporter", image: "/content/supported-by/IMG_1119.JPG.jpeg" },
+  { name: "Supporter", image: "/content/supported-by/WhatsApp Image 2026-04-23 at 18.06.01 (1).jpeg" },
+  { name: "Supporter", image: "/content/supported-by/WhatsApp Image 2026-04-28 at 15.53.17 (2).jpeg" },
+  { name: "Supporter", image: "/content/supported-by/WhatsApp Image 2026-04-29 at 21.55.35.jpeg" },
 ];
 
 const LogoGrid = ({
