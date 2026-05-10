@@ -3,6 +3,7 @@ import { useRef } from "react";
 
 const sponsors = [
   { name: "Felancy", image: "/content/sponsored-by/LOGO FLC.png" },
+  { name: "Reddorz", image: "/content/sponsored-by/WhatsApp Image 2026-01-10 at 17.00.30.jpeg" },
   { name: "Sari Roti", image: "/content/sponsored-by/Logo-Sari-Roti Hires.png" },
   { name: "AFI Design", image: "/content/sponsored-by/afi design.jpg.jpeg" },
   { name: "Marchee", image: "/content/sponsored-by/Marchee Logo 1_1.png" },
@@ -13,7 +14,6 @@ const sponsors = [
   { name: "Katabtoe", image: "/content/sponsored-by/PRIMARY LOGO KATABTOE.png" },
   { name: "Sponsor", image: "/content/sponsored-by/IMG_5213.PNG" },
   { name: "Sponsor", image: "/content/sponsored-by/IMG_1047.JPG" },
-  { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-01-11 at 20.17.04.jpeg" },
   { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-01-12 at 17.08.37.jpeg" },
   { name: "Sponsor", image: "/content/sponsored-by/WhatsApp Image 2026-03-04 at 09.04.17.jpeg" },
   { name: "Sponsor", image: "/content/sponsored-by/ke.png" },
